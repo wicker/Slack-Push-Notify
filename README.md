@@ -68,3 +68,6 @@ Double checked permissions, which are correct.
 This push has the README and a new image, so the post-receive hook should fire.
 
 Oh! Code's on Github, which won't let me run server-side code. That's okay, though, for now I'll move it to a post-commit hook by changing the name of the file.
+
+Test results: IT WORKS.
+
