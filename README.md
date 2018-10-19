@@ -59,4 +59,10 @@ curl -X POST -H 'Content-type: application/json' --data '{"text":"Push-Notify re
 
 Now to test the hook...
 
+Interesting! It works when run in the terminal, but not when the README is updated and pushed. Here's the result in Slack from the terminal command: 
 
+![Post-Receive Webhook from Terminal to Slack](post-receive-webhook.png)
+
+Double checked permissions, which are correct. 
+
+This push has the README and a new image, so the post-receive hook should fire.
