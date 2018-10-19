@@ -56,3 +56,7 @@ echo Notifying Slack through Push-Notify app.
 
 curl -X POST -H 'Content-type: application/json' --data '{"text":"Push-Notify repo has been updated."}' <hook url here>
 ```
+
+Now to test the hook...
+
+
