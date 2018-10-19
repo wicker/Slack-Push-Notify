@@ -31,6 +31,28 @@ curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, World!"
 
 ![Hello World webhook screenshot](hello-world-webhook.png)
 
+### Adding Git Hook to Repository
 
+Referring to [Git documentation](https://github.com/git/git/blob/master/Documentation/githooks.txt#L295)
 
+The server-side post-push hook is called `post-receive`:
 
+```
+This hook is invoked by linkgit:git-receive-pack[1] when it reacts to `git push` and updates reference(s) in its repository. It executes on the remote repository once after all the refs have been updated.
+```
+
+Reviewed the [git/contrib/hooks/multimail](https://github.com/git/git/tree/master/contrib/hooks/multimail) post-receive hook example.
+
+Just use Bash for this for now to make that curl call.
+
+We're exposing that webhook URL so there's a potential for abuse, but this is a demo for today and I'll disable the webhook in a few hours.
+
+Here's the new `post-receive` webhook, chmodded to 755:
+
+```
+#!/bin/bash
+
+echo Notifying Slack through Push-Notify app.
+
+curl -X POST -H 'Content-type: application/json' --data '{"text":"Push-Notify repo has been updated."}' <hook url here>
+```
